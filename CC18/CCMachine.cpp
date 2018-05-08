@@ -13,8 +13,11 @@ void CCMachine::execute()
 
 			// Main execution loop
 
-			m_window.clear(sf::Color::Blue);
-			m_window.display();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+				m_window.close();
+
+			for (auto &up : m_system)
+				up->update();
 		}
 	}
 }
