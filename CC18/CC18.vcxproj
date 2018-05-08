@@ -152,14 +152,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CCMachine.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bubble.h" />
     <ClInclude Include="CCMachine.h" />
     <ClInclude Include="CCState.h" />
     <ClInclude Include="EventBase.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="ISystem.h" />
     <ClInclude Include="UnitTests.h" />
     <ClInclude Include="UTEventHandler.h" />
   </ItemGroup>
