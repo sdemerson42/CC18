@@ -161,6 +161,7 @@
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="CCMachine.h" />
     <ClInclude Include="CCState.h" />
+    <ClInclude Include="Connection.h" />
     <ClInclude Include="EventBase.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="ISystem.h" />
