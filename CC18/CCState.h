@@ -22,8 +22,7 @@ public:
 			x += rand() % 40 - 20;
 			y += rand() % 40 - 20;
 			m_bubble[m_bubble.size() - 1]->setPosition(x, y);
-			if (i != 0)
-				m_connection.push_back(std::make_unique<Connection>(m_bubble[i], m_bubble[i - 1]));
+			
 		}
 	}
 	const std::vector<std::shared_ptr<Bubble>> &bubble() const

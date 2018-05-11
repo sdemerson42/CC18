@@ -8,3 +8,13 @@ void EventHandler::handleEvent(const EventBase *event)
 		wrapper->second->call(event);
 	}
 }
+
+void EventHandler::broadcastEvent(const EventBase *event)
+{
+	for (auto i = 0; i < AutoList<EventHandler>::size(); ++i)
+	{
+		EventHandler *handler = AutoList<EventHandler>::get(i);
+		if (handler != this)
+			handler->handleEvent(event);
+	}
+}

@@ -1,4 +1,5 @@
 #include "CCMachine.h"
+#include "CloseAppEvent.h"
 
 void CCMachine::execute()
 {
@@ -13,11 +14,15 @@ void CCMachine::execute()
 
 			// Main execution loop
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-				m_window.close();
-
 			for (auto &up : m_system)
 				up->update();
+
+			if (m_isClosing) m_window.close();
 		}
 	}
+}
+
+void CCMachine::onCloseApp(const CloseAppEvent *event)
+{
+	m_isClosing = true;
 }

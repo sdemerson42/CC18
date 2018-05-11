@@ -1,9 +1,11 @@
 #pragma once
 
 #include "EventBase.h"
+#include "AutoList.h"
 #include <map>
 #include <typeindex>
 #include <memory>
+#include "Events.h"
 
 template<typename T, typename EventT>
 using Delegate = void(T::*)(const EventT *);
@@ -30,7 +32,7 @@ private:
 	Delegate<T, EventT> m_delegate;
 };
 
-class EventHandler
+class EventHandler : public AutoList<EventHandler>
 {
 public:
 	template<typename T, typename EventT>
@@ -39,6 +41,7 @@ public:
 		m_wrapperMap[std::type_index{ typeid(EventT) }] = std::make_unique<FuncWrapper<T, EventT>>(instance, func);
 	}
 	void handleEvent(const EventBase *);
+	void broadcastEvent(const EventBase *);
 private:
 	std::map<std::type_index, std::unique_ptr<IFuncWrapper>> m_wrapperMap;
 };
