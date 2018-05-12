@@ -2,8 +2,9 @@
 
 #include <string>
 #include "SFML\Graphics.hpp"
+#include "EventHandler.h"
 
-class Bubble
+class Bubble : public EventHandler, public AutoList<Bubble>
 {
 public:
 	sf::Vector2f size() const

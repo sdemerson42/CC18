@@ -15,7 +15,7 @@ class CCMachine : public EventHandler
 {
 public:
 	CCMachine() :
-		m_window{ sf::VideoMode{1920, 1200}, "CCMachine", sf::Style::Fullscreen },
+		m_window{ sf::VideoMode{1920, 1200}, "CCMachine", /*sf::Style::Fullscreen*/ },
 		m_state{ std::make_unique<CCState>() }
 	{
 		registerFunc(this, &CCMachine::onCloseApp);

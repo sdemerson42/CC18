@@ -7,10 +7,6 @@ template<typename T>
 class AutoList
 {
 public:
-	AutoList()
-	{
-		m_refVector.push_back(static_cast<T*>(this));
-	}
 	virtual ~AutoList()
 	{
 		auto p = static_cast<T*>(this);
@@ -27,6 +23,11 @@ public:
 	static T *get(typename std::vector<T*>::size_type index)
 	{
 		return m_refVector[index];
+	}
+protected:
+	AutoList()
+	{
+		m_refVector.push_back(static_cast<T*>(this));
 	}
 private:
 	static std::vector<T*> m_refVector;

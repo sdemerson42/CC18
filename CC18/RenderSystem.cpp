@@ -3,6 +3,9 @@
 
 void RenderSystem::update()
 {
+
+	m_window->clear(sf::Color::Blue);
+
 	sf::VertexArray va;
 	va.setPrimitiveType(sf::PrimitiveType::Quads);
 
@@ -23,9 +26,30 @@ void RenderSystem::update()
 		va.append(sf::Vertex{ sf::Vector2f{ bb->position().x, bb->position().y + bb->size().y } });
 	}
 	
+	if (m_isConnecting)
+	{
+		sf::VertexArray curCon;
+		curCon.setPrimitiveType(sf::PrimitiveType::Lines);
+		curCon.append(sf::Vertex{ sf::Vector2f{(float)m_connectionStartPoint.x, (float)m_connectionStartPoint.y } });
+		curCon.append(sf::Vertex{ sf::Vector2f{(float)sf::Mouse::getPosition().x, (float)sf::Mouse::getPosition().y} });
+		m_window->draw(curCon);
+	}
 
-	m_window->clear(sf::Color::Blue);
+	
 	m_window->draw(va2);
 	m_window->draw(va);
 	m_window->display();
+}
+
+void RenderSystem::onConnectionClick(const ConnectionClickEvent *event)
+{
+	if (!m_isConnecting)
+	{
+		m_connectionStartPoint = event->startPos;
+		m_isConnecting = true;
+	}
+	else
+	{
+		m_isConnecting = false;
+	}
 }
