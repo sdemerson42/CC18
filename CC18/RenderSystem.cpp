@@ -77,7 +77,7 @@ void RenderSystem::package()
 			sf::Vertex vert;
 			vert.position = rs->position;
 			v->append(vert);
-			vert.position = rs->position + rs->size;
+			vert.position = rs->size;
 			v->append(vert);
 		}
 
@@ -88,13 +88,13 @@ void RenderSystem::package()
 			vert.texCoords = rs->textureCoords;
 			v->append(vert);
 			vert.position = sf::Vector2f{ rs->position.x + rs->size.x, rs->position.y };
-			vert.texCoords = sf::Vector2f{ rs->position.x + rs->size.x, rs->position.y };
+			vert.texCoords = sf::Vector2f{ rs->textureCoords.x + rs->size.x, rs->textureCoords.y };
 			v->append(vert);
 			vert.position = sf::Vector2f{ rs->position.x + rs->size.x, rs->position.y + rs->size.y };
-			vert.texCoords = sf::Vector2f{ rs->position.x + rs->size.x, rs->position.y + rs->size.y };
+			vert.texCoords = sf::Vector2f{ rs->textureCoords.x + rs->size.x, rs->textureCoords.y + rs->size.y };
 			v->append(vert);
 			vert.position = sf::Vector2f{ rs->position.x, rs->position.y + rs->size.y };
-			vert.texCoords = sf::Vector2f{ rs->position.x, rs->position.y + rs->size.y };
+			vert.texCoords = sf::Vector2f{ rs->textureCoords.x, rs->textureCoords.y + rs->size.y };
 			v->append(vert);
 		}
 

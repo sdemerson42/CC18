@@ -25,6 +25,9 @@ public:
 			ref->setPosition(x, y);
 			ref->renderState().layer = RenderState::RenderLayer::Mid;
 			ref->renderState().size = ref->size();
+
+			if (i > 0)
+				m_connection.push_back(std::make_unique<Connection>( m_bubble[i], m_bubble[i - 1] ));
 		}
 	}
 	const std::vector<std::shared_ptr<Bubble>> &bubble() const

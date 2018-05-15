@@ -8,6 +8,10 @@
 class Bubble : public EventHandler, public AutoList<Bubble>
 {
 public:
+	Bubble()
+	{
+		//m_renderState.textureName = "Test.png";
+	}
 	sf::Vector2f size() const
 	{
 		return sf::Vector2f{ 100.0f, 100.0f };
