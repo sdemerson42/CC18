@@ -3,6 +3,7 @@
 #include <string>
 #include "SFML\Graphics.hpp"
 #include "EventHandler.h"
+#include "RenderState.h"
 
 class Bubble : public EventHandler, public AutoList<Bubble>
 {
@@ -13,8 +14,8 @@ public:
 	}
 	void setPosition(float x, float y)
 	{
-		m_position.x = x;
-		m_position.y = y;
+		m_renderState.position.x = x;
+		m_renderState.position.y = y;
 	}
 	void setPosition(const sf::Vector2f &v)
 	{
@@ -22,10 +23,12 @@ public:
 	}
 	const sf::Vector2f &position() const
 	{
-		return m_position;
+		return m_renderState.position;
+	}
+	RenderState &renderState()
+	{
+		return m_renderState;
 	}
 private:
-	std::string m_name;
-	sf::Vector2f m_position;
-	sf::Vector2f m_texturePosition;
+	RenderState m_renderState;
 };

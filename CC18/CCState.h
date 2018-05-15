@@ -21,8 +21,10 @@ public:
 			m_bubble.push_back(std::make_shared<Bubble>());
 			x += rand() % 40 - 20;
 			y += rand() % 40 - 20;
-			m_bubble[m_bubble.size() - 1]->setPosition(x, y);
-			
+			Bubble *ref = m_bubble[m_bubble.size() - 1].get();
+			ref->setPosition(x, y);
+			ref->renderState().layer = RenderState::RenderLayer::Mid;
+			ref->renderState().size = ref->size();
 		}
 	}
 	const std::vector<std::shared_ptr<Bubble>> &bubble() const
